@@ -2,7 +2,7 @@
 
 This is live on Flask: rwilfong.pythonanywhere.com
 
-This program takes a list of DOI's from user input, retrieves their abstracts, and generates a pair of summaries and keywords based on the text in the abstract. It has a content-based recommender system based on the generated keywords for each paper.
+This program takes a list of DOI's from user input, retrieves their abstracts, and generates a pair of summaries and keywords based on the text in the abstract. It has a content-based recommender system based on the generated keywords for each paper. It was created for BIOL 595: Practical Biocomputing at Purdue University.
 
 ### Required Libraries
 1. ``Flask:`` 
