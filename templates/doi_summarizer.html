@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- HTML script for the DOI summarizer page for user input -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Database Homepage</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='summarizer_styles.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <div class="header-left">
+                <h1><a href="{{ url_for('main') }}">DOI Recommender and Summarizer</a></h1>
+            </div>
+            <div class="header-right">
+                <ul class="nav">
+                    <li><a href="{{ url_for('summarizer') }}">DOI Summarizer</a></li>
+                    <li><a href="{{ url_for('return_data') }}">Return Data</a></li>
+                </ul>
+            </div>
+        </div>
+        <h3>Disclaimer: not all DOIs have PMIDs or MeSH terms.</h3>
+        <h3> In case of error, try submitting one DOI at a time.</h3>
+        <div class="form-box">
+            <form method="POST" action="{{ url_for('summarizer') }}">
+                <label for="links">DOI Links (comma-separated, only 5 at a time please!):</label>
+                <input type="text" id="links" name="links">
+                <label for="email">Email Account:</label>
+                <input type="text" id="email" name="email">
+                <label for="table_name">Table Name:</label>
+                <input type="text" id="table_name" name="table_name">
+                <!--<label for="ncbi_account">If you have an NCBI account, enter the associated email:</label>
+                <input type="text" id="ncbi_account" name="ncbi_account">-->
+                <label for="api_key">If you have an NCBI API key, enter here:</label>
+                <input type="text" id="api_key" name="api_key">
+                <input type="submit" value="Go!">
+            </form>
+        </div>
+    </body>
+</html>
