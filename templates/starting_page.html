@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- HTML script for the welcome page of the website-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOI Summarizer and Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='starter_styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1><a href="{{ url_for('main') }}">DOI Recommender and Summarizer</a></h1>
+        </div>
+        <div class="header-right">
+            <ul class="nav">
+                <li><a href="{{ url_for('summarizer') }}">DOI Summarizer</a></li>
+                <li><a href="{{ url_for('return_data') }}">Return Data</a></li>
+            </ul>
+        </div>
+    </div>
+    <h3>
+    </h3>
+    <div class="content">
+        <h2>Welcome to DOI Summarizer and Recommender!</h2>
+        <p class="text-paragraph">
+            <strong>Program Overview</strong>
+            <br>
+            This program is designed to summarize and recommend articles based on their DOI (Digital Object Identifier).
+            It utilizes natural language processing techniques to extract key information and generate concise summaries.
+            Additionally, it offers personalized article recommendations based on user input papers using a content-based recommendation system.
+            It recommends papers based on both the keywords and the MeSH terms.
+            <br> <br>
+            <strong>How to Use</strong>
+            <br>
+            To summarize and recommend articles, please select <strong>"DOI Summarizer"</strong> in the top right.
+            To return previous papers based on table name and date, please select <strong>"Return Data"</strong> in the top right.
+            <br>
+            <strong>Disclaimer: Not all DOIs will have recommended papers.</strong>
+        </p>
+    </div>
+    <footer>
+      <p class="footer-paragraph" >&copy; Rose Wilfong and Wenxuan Dong</p>
+    </footer>
+</body>
+</html>

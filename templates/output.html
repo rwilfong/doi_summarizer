@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOI Lookup Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+</head>
+<body>
+       <div class="header">
+            <div class="header-left">
+                <h1 class="head"><a href="{{ url_for('main') }}">DOI Recommender and Summarizer</a></h1>
+            </div>
+            <div class="header-right">
+                <ul class="nav">
+                    <li><a href="{{ url_for('summarizer') }}">DOI Summarizer</a></li>
+                    <li><a href="{{ url_for('return_data') }}">Return Data</a></li>
+                </ul>
+            </div>
+        </div>
+    <h1>DOI Lookup Results</h1>
+
+    <h2>Articles</h2>
+    <form action="/delete_entries", method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>DOI</th>
+                    <th>Title</th>
+                    <th>Summary</th>
+                    <th>Scikit Keywords</th>
+                    <th>NLTK Keywords</th>
+                    <th>MeSH Terms</th>
+                    <th>Delete Entry?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.doi }}</td>
+                    <td>{{ result.title }}</td>
+                    <td>{{ result.summary }}</td>
+                    <td>{{ result.scikit_keywords }}</td>
+                    <td>{{ result.nltk_keywords }}</td>
+                    <td>{{ result.mesh_terms }}</td>
+                    <!-- <td><input type="checkbox" name="entry_ids" value="{{ result.doi }}"></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!--<input type="submit" name="delete_entries" value="Delete Entries">-->
+    </form>
+    <h2>Article Recommendations By Scikit Keywords</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Original Article</th>
+                <th>Recommended Articles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in recs %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.scikit_keywords_recs }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        <h2>Article Recommendations By NLTK Keywords</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Original Article</th>
+                <th>Recommended Articles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in recs %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.nltk_keywords_recs }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        <h2>Article Recommendations By MeSH Terms</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Original Article</th>
+                <th>Recommended Articles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in recs %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.mesh_recs }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

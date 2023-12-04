@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Query Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='table_return_styles.css') }}">
+</head>
+<body>
+        <div class="header">
+            <div class="header-left">
+                <h1 class="head"><a href="{{ url_for('main') }}">DOI Recommender and Summarizer</a></h1>
+            </div>
+            <div class="header-right">
+                <ul class="nav">
+                    <li><a href="{{ url_for('summarizer') }}">DOI Summarizer</a></li>
+                    <li><a href="{{ url_for('return_data') }}">Return Data</a></li>
+                </ul>
+            </div>
+        </div>
+    <form action="/delete_entries_database" method="POST">
+    <h1>Query Results</h1>
+    {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>DOI</th>
+                    <th>Title</th>
+                    <th>Summary </th>
+                    <th>Scikit Keywords</th>
+                    <th>NLTK Keywords</th>
+                    <th>MeSH Terms</th>
+                    <th>Delete Entry?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td><input type="checkbox" name="delete_row" value="{{ row[0] }}"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Delete Selected</button>
+    {% else %}
+        <p>No matching records found.</p>
+    {% endif %}
+</body>
+</html>
