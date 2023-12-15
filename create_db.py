@@ -1,3 +1,10 @@
+"""=================================================================================================
+Script is used to create a database file called database.db. Inside there is a table called papers 
+which stores the user's email, table name (for callback), paper doi, pmid, title, abstract, summary,
+mesh terms, scikit keywords, nltk keywords, and the time added. 
+
+Rose Wilfong         05/05/2023
+================================================================================================="""
 import sqlite3
 
 conn = sqlite3.connect('database.db')
